@@ -1,0 +1,69 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { supabase } from "./supabaseClient";
+
+type Profile = {
+  id: string;
+  email: string | null;
+  is_subscribed: boolean;
+  plan: string | null;
+  stripe_customer_id: string | null;
+  stripe_subscription_id: string | null;
+};
+
+export function useUser() {
+  const [user, setUser] = useState<any>(null);
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let mounted = true;
+
+    async function load() {
+      setLoading(true);
+
+      const { data, error } = await supabase.auth.getUser();
+      const u = error ? null : data?.user ?? null;
+
+      if (!mounted) return;
+
+      setUser(u);
+
+      if (!u) {
+        setProfile(null);
+        setLoading(false);
+        return;
+      }
+
+      const { data: prof, error: profErr } = await supabase
+        .from("profiles")
+        .select("id, email, is_subscribed, plan, stripe_customer_id, stripe_subscription_id")
+        .eq("id", u.id)
+        .single();
+
+      if (!mounted) return;
+
+      if (profErr) {
+        setProfile(null);
+      } else {
+        setProfile(prof as Profile);
+      }
+
+      setLoading(false);
+    }
+
+    load();
+
+    const { data: sub } = supabase.auth.onAuthStateChange(() => {
+      load();
+    });
+
+    return () => {
+      mounted = false;
+      sub.subscription.unsubscribe();
+    };
+  }, []);
+
+  return { user, profile, loading };
+}
