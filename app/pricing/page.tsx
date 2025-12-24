@@ -1,17 +1,23 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useUser } from "@/lib/useUser";
 
 type Plan = "monthly" | "yearly";
 
 export default function PricingPage() {
-  const { user } = useUser();
+  const { user, profile, loading } = useUser();
   const [loadingPlan, setLoadingPlan] = useState<Plan | null>(null);
 
   const handleCheckout = async (plan: Plan) => {
     if (!user) {
       window.location.href = "/login";
+      return;
+    }
+
+    if (profile?.is_subscribed) {
+      alert("You already have an active subscription.");
       return;
     }
 
@@ -62,6 +68,23 @@ export default function PricingPage() {
           Simple tools for real problems. No artificial limits.
         </p>
 
+        {!loading && user && profile?.is_subscribed && (
+          <div className="glass neon-ring rounded-2xl p-5 mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <p className="font-semibold">You're already subscribed.</p>
+              <p className="text-sm text-white/60">
+                Manage your subscription from your account.
+              </p>
+            </div>
+            <Link
+              href="/account"
+              className="px-6 py-3 rounded-xl btn-primary font-semibold transition text-center"
+            >
+              Go to Account
+            </Link>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
           {/* Monthly */}
           <div className="glass neon-ring rounded-2xl p-8 flex flex-col h-full">
@@ -84,7 +107,7 @@ export default function PricingPage() {
 
             <button
               onClick={() => handleCheckout("monthly")}
-              disabled={loadingPlan !== null}
+              disabled={loadingPlan !== null || (!!user && !!profile?.is_subscribed)}
               className="w-full py-3 rounded-xl btn-primary font-semibold transition disabled:opacity-50 mt-auto"
             >
               {loadingPlan === "monthly" ? "Redirecting..." : "Choose Monthly"}
@@ -121,7 +144,7 @@ export default function PricingPage() {
 
             <button
               onClick={() => handleCheckout("yearly")}
-              disabled={loadingPlan !== null}
+              disabled={loadingPlan !== null || (!!user && !!profile?.is_subscribed)}
               className="w-full py-3 rounded-xl btn-primary font-semibold transition disabled:opacity-50 mt-auto"
             >
               {loadingPlan === "yearly" ? "Redirecting..." : "Choose Yearly"}

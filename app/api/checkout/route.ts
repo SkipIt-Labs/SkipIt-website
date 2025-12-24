@@ -1,7 +1,13 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+
+const supabaseAdmin = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 export async function POST(req: Request) {
   try {
@@ -9,6 +15,24 @@ export async function POST(req: Request) {
 
     if (!process.env.STRIPE_SECRET_KEY) {
       return NextResponse.json({ error: "Missing STRIPE_SECRET_KEY" }, { status: 500 });
+    }
+
+    // Server-side guard: block duplicate purchases
+    if (userId) {
+      const { data: profile, error: profErr } = await supabaseAdmin
+        .from("profiles")
+        .select("is_subscribed")
+        .eq("id", userId)
+        .single();
+
+      if (profErr) {
+        console.error("Profile lookup error:", profErr);
+      } else if (profile?.is_subscribed) {
+        return NextResponse.json(
+          { error: "You already have an active subscription." },
+          { status: 409 }
+        );
+      }
     }
 
     const priceId =
