@@ -1,14 +1,21 @@
 "use client";
 
 import { useUser } from "@/lib/useUser";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function AccountPage() {
   const { user, profile, loading } = useUser();
   const router = useRouter();
   const [loadingPortal, setLoadingPortal] = useState(false);
-  const [loadingCancel, setLoadingCancel] = useState(false);
+  const [signingOut, setSigningOut] = useState(false);
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.replace("/login");
+    }
+  }, [loading, user, router]);
 
   const handleManageBilling = async () => {
     if (!user) return;
@@ -35,34 +42,13 @@ export default function AccountPage() {
     }
   };
 
-  const handleCancelSubscription = async () => {
-    if (!confirm("Are you sure you want to cancel your subscription? You will lose access to all premium tools.")) {
-      return;
-    }
-    
-    if (!user) return;
-    setLoadingCancel(true);
-    
+  const handleSignOut = async () => {
+    setSigningOut(true);
     try {
-      const res = await fetch("/api/cancel-subscription", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: user.id }),
-      });
-      
-      const data = await res.json();
-      
-      if (res.ok) {
-        alert("Subscription cancelled successfully");
-        router.refresh();
-      } else {
-        alert(data.error || "Failed to cancel subscription");
-      }
-    } catch (e) {
-      console.error(e);
-      alert("Failed to cancel subscription");
+      await supabase.auth.signOut();
+      router.push("/login");
     } finally {
-      setLoadingCancel(false);
+      setSigningOut(false);
     }
   };
 
@@ -74,17 +60,14 @@ export default function AccountPage() {
     );
   }
 
-  if (!user) {
-    router.push("/login");
-    return null;
-  }
+  if (!user) return null;
 
   return (
     <main className="min-h-screen px-8 py-16">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-8">My Account</h1>
         
-        <div className="border border-white/10 rounded-xl p-6 mb-6">
+        <div className="glass neon-ring rounded-2xl p-6 mb-6">
           <h2 className="text-xl font-semibold mb-4">Account Information</h2>
           <div className="space-y-2">
             <p className="text-white/70">
@@ -101,39 +84,41 @@ export default function AccountPage() {
               )}
             </p>
           </div>
+
+          <div className="mt-6 flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={handleSignOut}
+              disabled={signingOut}
+              className="px-6 py-3 rounded-xl btn-ghost font-semibold transition disabled:opacity-50"
+            >
+              {signingOut ? "Signing out..." : "Sign out"}
+            </button>
+          </div>
         </div>
 
         {profile?.is_subscribed && (
-          <div className="border border-white/10 rounded-xl p-6 space-y-4">
+          <div className="glass neon-ring rounded-2xl p-6 space-y-4">
             <h2 className="text-xl font-semibold mb-4">Subscription Management</h2>
             
             <button
               onClick={handleManageBilling}
               disabled={loadingPortal}
-              className="w-full py-3 rounded-xl border border-white/30 text-white font-semibold hover:border-white/50 transition disabled:opacity-50"
+              className="w-full py-3 rounded-xl btn-primary font-semibold transition disabled:opacity-50"
             >
               {loadingPortal ? "Loading..." : "Manage Payment Method"}
-            </button>
-            
-            <button
-              onClick={handleCancelSubscription}
-              disabled={loadingCancel}
-              className="w-full py-3 rounded-xl bg-red-500/20 border border-red-500/50 text-red-400 font-semibold hover:bg-red-500/30 transition disabled:opacity-50"
-            >
-              {loadingCancel ? "Cancelling..." : "Cancel Subscription"}
             </button>
           </div>
         )}
 
         {!profile?.is_subscribed && (
-          <div className="border border-white/10 rounded-xl p-6">
+          <div className="glass neon-ring rounded-2xl p-6">
             <h2 className="text-xl font-semibold mb-4">No Active Subscription</h2>
             <p className="text-white/60 mb-4">
               You don't have an active subscription. Subscribe to get access to all tools.
             </p>
             <a
               href="/pricing"
-              className="inline-block px-6 py-3 rounded-xl bg-white text-black font-semibold hover:bg-white/90 transition"
+              className="inline-block px-6 py-3 rounded-xl btn-primary font-semibold transition"
             >
               View Pricing
             </a>

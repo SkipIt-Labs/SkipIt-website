@@ -34,6 +34,12 @@ export default function Navbar() {
         >
           Subscription
         </Link>
+        <Link
+          href="/contact"
+          className="px-4 py-2 rounded-xl text-white/80 hover:text-white hover:bg-white/5 transition"
+        >
+          Contact
+        </Link>
 
         {!loading && user && (
           <Link

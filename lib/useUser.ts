@@ -45,7 +45,29 @@ export function useUser() {
       if (!mounted) return;
 
       if (profErr) {
-        setProfile(null);
+        // If profile row doesn't exist yet, try to create it (first login / first verify).
+        const { data: created, error: createErr } = await supabase
+          .from("profiles")
+          .upsert(
+            {
+              id: u.id,
+              email: u.email,
+              is_subscribed: false,
+              plan: null,
+              stripe_customer_id: null,
+              stripe_subscription_id: null,
+            },
+            { onConflict: "id" }
+          )
+          .select("id, email, is_subscribed, plan, stripe_customer_id, stripe_subscription_id")
+          .single();
+
+        if (createErr) {
+          console.error("Failed to create profile:", createErr);
+          setProfile(null);
+        } else {
+          setProfile(created as Profile);
+        }
       } else {
         setProfile(prof as Profile);
       }

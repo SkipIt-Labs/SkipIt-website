@@ -3,6 +3,7 @@
 import { supabase } from "@/lib/supabaseClient";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -22,7 +23,12 @@ export default function LoginPage() {
     });
 
     if (error) {
-      setMessage(error.message);
+      const msg = (error.message || "").toLowerCase();
+      if (msg.includes("email not confirmed")) {
+        setMessage("Please confirm your email first (check your inbox), then try again.");
+      } else {
+        setMessage(error.message);
+      }
       setLoading(false);
     } else {
       router.push("/tools");
@@ -31,7 +37,7 @@ export default function LoginPage() {
 
   return (
     <main className="min-h-screen flex items-center justify-center px-8">
-      <div className="w-full max-w-md border border-white/10 rounded-2xl p-8">
+      <div className="w-full max-w-md glass neon-ring rounded-2xl p-8">
         <h1 className="text-2xl font-bold mb-6 text-center">
           SkipIt Authentication
         </h1>
@@ -63,7 +69,7 @@ export default function LoginPage() {
 
           <button
             disabled={loading}
-            className="w-full py-3 mt-4 rounded-xl bg-white text-black font-semibold hover:bg-white/90 transition disabled:opacity-50"
+            className="w-full py-3 mt-4 rounded-xl btn-primary font-semibold transition disabled:opacity-50"
           >
             {loading ? "Authenticating..." : "Continue"}
           </button>
@@ -74,6 +80,16 @@ export default function LoginPage() {
             {message}
           </p>
         )}
+
+        <div className="mt-6 text-sm text-center text-white/60">
+          Need an account?{" "}
+          <Link
+            href="/signup"
+            className="text-white/80 hover:text-white underline underline-offset-4"
+          >
+            Create account
+          </Link>
+        </div>
       </div>
     </main>
   );

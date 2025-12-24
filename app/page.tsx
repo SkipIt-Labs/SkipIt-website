@@ -58,15 +58,29 @@ export default function Home() {
                     >
                       Browse Tools
                     </Link>
+                    <Link
+                      href="/contact"
+                      className="px-8 py-3 rounded-xl btn-ghost font-semibold transition w-full sm:w-auto text-center"
+                    >
+                      Request a Tool
+                    </Link>
                   </>
                 )}
                 {!loading && user && (
-                  <Link
-                    href="/tools"
-                    className="px-8 py-3 rounded-xl btn-primary font-semibold transition w-full sm:w-auto text-center"
-                  >
-                    Go to Tools
-                  </Link>
+                  <>
+                    <Link
+                      href="/tools"
+                      className="px-8 py-3 rounded-xl btn-primary font-semibold transition w-full sm:w-auto text-center"
+                    >
+                      Go to Tools
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="px-8 py-3 rounded-xl btn-ghost font-semibold transition w-full sm:w-auto text-center"
+                    >
+                      Request a Tool
+                    </Link>
+                  </>
                 )}
               </div>
 
