@@ -3,18 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useUser } from "@/lib/useUser";
-import { supabase } from "@/lib/supabaseClient";
 
 export default function Navbar() {
   const { user, loading } = useUser();
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-  };
-
   return (
-    <nav className="w-full px-8 py-4 flex items-center justify-between border-b border-white/10">
-      <div className="flex items-center">
+    <nav className="w-full px-6 md:px-8 py-4 flex items-center justify-between">
+      <div className="flex items-center glass neon-ring rounded-2xl px-4 py-3">
         <Link href="/" className="flex items-center">
           <Image
             src="/skipit-icon.png"
@@ -26,38 +21,36 @@ export default function Navbar() {
         </Link>
       </div>
 
-      <div className="flex gap-6 text-sm text-white/80 items-center">
-        <Link href="/tools" className="hover:text-white">
+      <div className="glass neon-ring rounded-2xl px-2 py-2 flex items-center gap-1 text-sm">
+        <Link
+          href="/tools"
+          className="px-4 py-2 rounded-xl text-white/80 hover:text-white hover:bg-white/5 transition"
+        >
           Tools
         </Link>
-        <Link href="/pricing" className="hover:text-white">
+        <Link
+          href="/pricing"
+          className="px-4 py-2 rounded-xl text-white/80 hover:text-white hover:bg-white/5 transition"
+        >
           Subscription
         </Link>
 
         {!loading && user && (
-          <Link href="/account" className="hover:text-white">
+          <Link
+            href="/account"
+            className="px-4 py-2 rounded-xl btn-primary font-semibold transition"
+          >
             Account
           </Link>
         )}
 
         {!loading && !user && (
-          <Link href="/login" className="hover:text-white">
+          <Link
+            href="/login"
+            className="px-4 py-2 rounded-xl btn-primary font-semibold transition"
+          >
             Login
           </Link>
-        )}
-
-        {!loading && user && (
-          <>
-            <span className="text-white/60 text-xs">
-              {user.email}
-            </span>
-            <button
-              onClick={handleLogout}
-              className="text-red-400 hover:text-red-300"
-            >
-              Logout
-            </button>
-          </>
         )}
       </div>
     </nav>

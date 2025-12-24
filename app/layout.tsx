@@ -21,7 +21,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/skipit-icon.png" />
       </head>
-      <body className="bg-black text-white">
+      <body className="min-h-screen text-white relative">
         <Navbar />
         {children}
       </body>
