@@ -3,7 +3,7 @@ import Link from "next/link";
 type ToolCardProps = {
   title: string;
   description: string;
-  type: "online" | "offline";
+  statusBadge?: string | null;
   locked: boolean;
   isLoggedIn?: boolean;
 };
@@ -11,15 +11,20 @@ type ToolCardProps = {
 export default function ToolCard({
   title,
   description,
-  type,
+  statusBadge,
   locked,
   isLoggedIn,
 }: ToolCardProps) {
+  const badgeText = (statusBadge ?? "").trim() || "Offline";
+
   if (!isLoggedIn) {
     return (
       <div className="border rounded-xl p-6 transition border-white/10 opacity-60 flex flex-col h-full">
         <h2 className="text-xl font-semibold mb-2">{title}</h2>
         <p className="text-white/70 text-sm mb-4 flex-grow">{description}</p>
+        <div className="flex items-center justify-between mt-auto">
+          <span className="text-xs text-white/50">{badgeText}</span>
+        </div>
       </div>
     );
   }
@@ -35,9 +40,7 @@ export default function ToolCard({
       <p className="text-white/70 text-sm mb-4 flex-grow">{description}</p>
 
       <div className="flex items-center justify-between mt-auto">
-        <span className="text-xs text-white/50">
-          {type === "offline" ? "Offline tool" : "Online tool"}
-        </span>
+        <span className="text-xs text-white/50">{badgeText}</span>
 
         {locked ? (
           <Link

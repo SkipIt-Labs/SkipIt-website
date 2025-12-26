@@ -208,19 +208,17 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="glass neon-ring rounded-2xl p-6 hover:border-white/30 transition">
-              <h3 className="text-xl font-semibold mb-2">YouTube Downloader</h3>
+              <h3 className="text-xl font-semibold mb-2">Media Downloader</h3>
               <p className="text-white/60 text-sm mb-4">
                 Download playlists, long videos or entire matches without limitations.
               </p>
-              <span className="text-xs text-white/50">Offline tool</span>
             </div>
             
             <div className="glass neon-ring rounded-2xl p-6 hover:border-white/30 transition">
-              <h3 className="text-xl font-semibold mb-2">Build PC on Budget</h3>
+              <h3 className="text-xl font-semibold mb-2">Universal Convetor</h3>
               <p className="text-white/60 text-sm mb-4">
-                Tell us what you do and your budget, get the optimal configuration.
+                Convert any file to any other file format.
               </p>
-              <span className="text-xs text-white/50">Online tool</span>
             </div>
             
             <div className="glass neon-ring rounded-2xl p-6 hover:border-white/30 transition">
@@ -228,7 +226,6 @@ export default function Home() {
               <p className="text-white/60 text-sm mb-4">
                 Change audio pitch quickly, without AI subscriptions.
               </p>
-              <span className="text-xs text-white/50">Offline tool</span>
             </div>
           </div>
           
@@ -273,6 +270,31 @@ export default function Home() {
           </div>
         </section>
       )}
+
+      {/* Footer */}
+      <footer className="px-6 md:px-8 pb-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="h-px w-full bg-gradient-to-r from-white/0 via-white/10 to-white/0 mb-6" />
+          <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-xs text-white/45">
+            <div>© {new Date().getFullYear()} SkipIt.</div>
+            <div className="flex items-center gap-2">
+              <Link
+                href="/legal"
+                className="transition text-white/45 hover:text-cyan-300"
+              >
+                Terms &amp; Refund Policy
+              </Link>
+              <span className="text-white/25">|</span>
+              <Link
+                href="/contact"
+                className="transition text-white/45 hover:text-cyan-300"
+              >
+                Contact
+              </Link>
+            </div>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
