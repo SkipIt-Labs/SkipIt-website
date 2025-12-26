@@ -3,6 +3,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useUser } from "@/lib/useUser";
+import SpotlightCard from "@/components/SpotlightCard";
+import {
+  CreditCard,
+  Infinity,
+  HardDrive,
+  ShieldCheck,
+  Rocket,
+  Zap,
+  Package,
+  Cpu,
+} from "lucide-react";
 
 export default function Home() {
   const { user, loading } = useUser();
@@ -83,13 +94,6 @@ export default function Home() {
                   </>
                 )}
               </div>
-
-              <div className="mt-10 flex flex-wrap gap-2 justify-center">
-                <span className="px-3 py-1 rounded-full text-xs glass">Offline tools</span>
-                <span className="px-3 py-1 rounded-full text-xs glass">Online tools</span>
-                <span className="px-3 py-1 rounded-full text-xs glass">Stripe subscription</span>
-                <span className="px-3 py-1 rounded-full text-xs glass">Supabase login</span>
-              </div>
             </div>
           </div>
         </div>
@@ -102,31 +106,94 @@ export default function Home() {
             <h2 className="text-2xl md:text-3xl font-bold">Why SkipIt?</h2>
             <div className="hidden md:block h-px flex-1 ml-6 bg-gradient-to-r from-white/0 via-white/15 to-white/0" />
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="glass neon-ring rounded-2xl p-6">
-              <div className="text-3xl mb-4">⚡</div>
-              <h3 className="text-lg font-semibold mb-2">Fast & Simple</h3>
-              <p className="text-white/65 text-sm">
-                No bloated interfaces. Get things done quickly.
-              </p>
-            </div>
-            
-            <div className="glass neon-ring rounded-2xl p-6">
-              <div className="text-3xl mb-4">🔓</div>
-              <h3 className="text-lg font-semibold mb-2">No Limits</h3>
-              <p className="text-white/65 text-sm">
-                Download entire playlists, process long files. No artificial restrictions.
-              </p>
-            </div>
-            
-            <div className="glass neon-ring rounded-2xl p-6">
-              <div className="text-3xl mb-4">🛠️</div>
-              <h3 className="text-lg font-semibold mb-2">Real Tools</h3>
-              <p className="text-white/65 text-sm">
-                Built for actual problems. Offline tools that work without AI subscriptions.
-              </p>
-            </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
+            {/* Card 1 (Large - Main Pain) */}
+            <SpotlightCard
+              eyebrow="VALUE"
+              title="Stop Renting Your Tools."
+              description="Why pay $20/month forever for a tool you use twice? SkipIt is your permanent digital warehouse."
+              className="md:col-span-4 md:row-span-2"
+              icon={
+                <div className="flex items-center gap-2">
+                  <CreditCard className="w-5 h-5" />
+                  <Infinity className="w-5 h-5" />
+                </div>
+              }
+            >
+              <div className="mt-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+                  <p className="text-[11px] tracking-[0.24em] uppercase text-white/45">
+                    subscription culture
+                  </p>
+                  <p className="mt-2 text-sm text-white/80">
+                    Pay forever, keep nothing.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-cyan-300/25 bg-black/30 p-4">
+                  <p className="text-[11px] tracking-[0.24em] uppercase text-cyan-200/70">
+                    skipit
+                  </p>
+                  <p className="mt-2 text-sm text-white/80">
+                    Own the toolkit. Build momentum.
+                  </p>
+                </div>
+              </div>
+            </SpotlightCard>
+
+            {/* Card 2 (Tall/Square - Privacy) */}
+            <SpotlightCard
+              eyebrow="PRIVACY"
+              title="Offline is the new Luxury."
+              description="No cloud uploads. No data tracking. Your files never leave your machine."
+              className="md:col-span-2 md:row-span-2"
+              icon={
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-5 h-5" />
+                  <HardDrive className="w-5 h-5" />
+                </div>
+              }
+            >
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 rounded-full text-xs bg-black/30 border border-white/10 text-white/70">
+                  Offline tools
+                </span>
+                <span className="px-3 py-1 rounded-full text-xs bg-black/30 border border-white/10 text-white/70">
+                  No uploads
+                </span>
+                <span className="px-3 py-1 rounded-full text-xs bg-black/30 border border-white/10 text-white/70">
+                  No tracking
+                </span>
+              </div>
+            </SpotlightCard>
+
+            {/* Card 3 (Wide - Performance) */}
+            <SpotlightCard
+              eyebrow="SPEED"
+              title="Instant Launch."
+              description="No logins, no 'update required' popups. Just click and work."
+              className="md:col-span-4"
+              icon={
+                <div className="flex items-center gap-2">
+                  <Rocket className="w-5 h-5" />
+                  <Zap className="w-5 h-5" />
+                </div>
+              }
+            />
+
+            {/* Card 4 (Standard) */}
+            <SpotlightCard
+              eyebrow="LEAN"
+              title="The Anti‑Bloatware."
+              description="10+ Tools. Max 200MB / tool . Runs on a potato."
+              className="md:col-span-2"
+              icon={
+                <div className="flex items-center gap-2">
+                  <Package className="w-5 h-5" />
+                  <Cpu className="w-5 h-5" />
+                </div>
+              }
+            />
           </div>
         </div>
       </section>

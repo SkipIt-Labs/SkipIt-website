@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SkipIt — Terms of Service &amp; Refund Policy</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+      :root {
+        --bg: #121212;
+        --panel: rgba(255, 255, 255, 0.05);
+        --panel-2: rgba(255, 255, 255, 0.08);
+        --border: rgba(255, 255, 255, 0.14);
+        --border-2: rgba(255, 255, 255, 0.22);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.68);
+        --muted2: rgba(255, 255, 255, 0.52);
+        --cyan: #00e5ff;
+        --blue: #4a7dff;
+        --glow: rgba(0, 229, 255, 0.24);
+        --glow2: rgba(74, 125, 255, 0.20);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        background:
+          radial-gradient(1100px 700px at 20% 10%, rgba(0, 229, 255, 0.12), transparent 55%),
+          radial-gradient(900px 600px at 90% 20%, rgba(74, 125, 255, 0.12), transparent 55%),
+          radial-gradient(900px 700px at 50% 100%, rgba(0, 229, 255, 0.06), transparent 55%),
+          linear-gradient(180deg, #121212 0%, #0f1014 100%);
+        color: var(--text);
+        line-height: 1.55;
+      }
+
+      /* Subtle grid overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+        background-size: 52px 52px;
+        mask-image: radial-gradient(700px 520px at 50% 10%, black 40%, transparent 72%);
+        opacity: 0.35;
+        z-index: 0;
+      }
+
+      a { color: inherit; }
+      a:hover { color: white; }
+
+      .wrap {
+        position: relative;
+        z-index: 1;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 28px 18px 60px;
+      }
+
+      .hero {
+        padding: 22px 18px;
+        border-radius: 20px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(12px);
+        box-shadow:
+          0 0 0 1px rgba(255,255,255,0.03) inset,
+          0 24px 70px rgba(0,0,0,0.45),
+          0 0 28px var(--glow),
+          0 0 40px var(--glow2);
+      }
+
+      .title {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10px;
+        margin: 0 0 8px;
+      }
+
+      .title h1 {
+        margin: 0;
+        font-size: clamp(22px, 3.5vw, 34px);
+        letter-spacing: -0.02em;
+        font-weight: 800;
+      }
+
+      .badge {
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
+      }
+
+      .meta {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .meta strong {
+        color: rgba(255,255,255,0.86);
+        font-weight: 600;
+      }
+
+      .grid {
+        margin-top: 18px;
+        display: grid;
+        gap: 12px;
+      }
+
+      details {
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        overflow: hidden;
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset;
+      }
+
+      details[open] {
+        border-color: var(--border-2);
+        background: var(--panel-2);
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 0 24px var(--glow);
+      }
+
+      summary {
+        cursor: pointer;
+        list-style: none;
+        padding: 16px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        user-select: none;
+        outline: none;
+      }
+
+      summary::-webkit-details-marker { display: none; }
+
+      .sum-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.2));
+        box-shadow: 0 0 14px var(--glow), 0 0 22px var(--glow2);
+        flex: 0 0 auto;
+      }
+
+      .sum-title {
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        font-size: 16px;
+      }
+
+      .chev {
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        display: grid;
+        place-items: center;
+        color: var(--muted);
+        background: rgba(255,255,255,0.04);
+        flex: 0 0 auto;
+        transition: transform 160ms ease, border-color 160ms ease, color 160ms ease;
+      }
+
+      details[open] .chev {
+        transform: rotate(180deg);
+        border-color: rgba(0, 229, 255, 0.35);
+        color: rgba(255,255,255,0.86);
+      }
+
+      .content {
+        padding: 0 16px 16px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .content h3 {
+        margin: 14px 0 6px;
+        font-size: 14px;
+        color: rgba(255,255,255,0.86);
+        font-weight: 700;
+      }
+
+      .content ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+      }
+
+      .content li { margin: 6px 0; }
+
+      .callout {
+        margin-top: 12px;
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(0, 229, 255, 0.22);
+        background: linear-gradient(135deg, rgba(0,229,255,0.10), rgba(74,125,255,0.08));
+        color: rgba(255,255,255,0.78);
+      }
+
+      .footer {
+        margin-top: 18px;
+        padding: 16px 14px;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,0.04);
+        color: var(--muted);
+        font-size: 13px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      .footer strong { color: rgba(255,255,255,0.86); }
+
+      @media (max-width: 560px) {
+        .hero { padding: 18px 14px; }
+        summary { padding: 14px 14px; }
+        .content { padding: 0 14px 14px; }
+        .badge { width: 100%; text-align: center; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <header class="hero" role="banner">
+        <div class="title">
+          <h1>Terms of Service &amp; Refund Policy</h1>
+          <div class="badge">SkipIt Software</div>
+        </div>
+        <p class="meta"><strong>Last Updated:</strong> December 25, 2025</p>
+        <p class="meta" style="margin-top: 10px;">
+          This page explains how SkipIt products and subscriptions work, what you are allowed to do
+          with the software, and how refunds are handled. If anything is unclear, contact us before purchasing.
+        </p>
+      </header>
+
+      <section class="grid" aria-label="Legal sections">
+        <details open>
+          <summary>
+            <span class="sum-left">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="sum-title">1) The “No‑Nonsense” Refund Policy (EU Digital Content)</span>
+            </span>
+            <span class="chev" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="content">
+            <h3>The EU Law Clause (Digital Content &amp; Immediate Execution)</h3>
+            <p>
+              SkipIt provides digital content and/or digital services (software tools) delivered electronically.
+              By completing a purchase and receiving access to the software, you request the immediate execution of
+              the contract.
+            </p>
+            <p>
+              <strong>Express consent &amp; acknowledgment:</strong> By purchasing and downloading/accessing the software,
+              you expressly agree to immediate performance and acknowledge that you <strong>waive your 14‑day right of withdrawal</strong>
+              (cooling‑off period) for digital content that is supplied immediately and not on a tangible medium, to the extent permitted
+              under applicable EU consumer law (including Directive 2011/83/EU as implemented in Romania).
+            </p>
+
+            <div class="callout">
+              <strong>Good Faith Guarantee:</strong> However, we offer a <strong>7‑Day Money‑Back Guarantee</strong> if the software
+              does not work on your machine or you are unsatisfied, provided you contact us first so we can attempt to resolve the issue.
+            </div>
+
+            <h3>Anti‑Abuse Clause</h3>
+            <p>
+              We reserve the right to deny refunds in cases of suspected abuse or bad‑faith behavior, including but not limited to:
+            </p>
+            <ul>
+              <li>Downloading a large portion of the tool library and immediately requesting a refund.</li>
+              <li>Repeated refund requests across multiple purchases or accounts.</li>
+              <li>Fraudulent activity, chargeback abuse, or policy circumvention.</li>
+            </ul>
+
+            <h3>How refunds work</h3>
+            <ul>
+              <li>Refund requests must be submitted within 7 days of purchase.</li>
+              <li>Where approved, refunds are processed to the original payment method.</li>
+              <li>Processing times depend on your bank/card provider.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="sum-left">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="sum-title">2) Terms of Use</span>
+            </span>
+            <span class="chev" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="content">
+            <h3>License</h3>
+            <p>
+              Your purchase grants you a personal, limited, non‑exclusive, non‑transferable, revocable license to use SkipIt tools
+              for your own lawful purposes, subject to these Terms.
+            </p>
+
+            <h3>Restrictions</h3>
+            <ul>
+              <li>You may not resell, sublicense, rent, lease, or redistribute the tools.</li>
+              <li>You may not reverse engineer, decompile, or attempt to extract source code except where permitted by law.</li>
+              <li>You may not remove or alter notices, branding, licensing, or technical protections.</li>
+              <li>You may not use the tools to violate applicable law or third‑party rights.</li>
+            </ul>
+
+            <h3>“As Is” Warranty Disclaimer</h3>
+            <p>
+              The software is provided <strong>“as is”</strong> and <strong>“as available”</strong>, without warranties of any kind,
+              whether express, implied, or statutory, including implied warranties of merchantability, fitness for a particular purpose,
+              and non‑infringement, to the maximum extent permitted by law.
+            </p>
+
+            <h3>Limitation of Liability</h3>
+            <p>
+              To the maximum extent permitted by law, SkipIt Software will not be liable for indirect, incidental, special,
+              consequential, or punitive damages, including loss of profits, loss of data, or business interruption.
+              Many SkipIt tools run locally; you are responsible for backing up your files and verifying outputs.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="sum-left">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="sum-title">3) Privacy (The “Offline” Promise)</span>
+            </span>
+            <span class="chev" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="content">
+            <h3>Offline tools</h3>
+            <p>
+              SkipIt tools are designed to operate <strong>offline</strong>. We do not upload your files to the cloud for processing.
+              We do not collect usage data from your offline tool executions.
+            </p>
+
+            <h3>Payments</h3>
+            <p>
+              Payments are processed securely by <strong>Stripe</strong>. We do not store or process your full credit card details.
+              Stripe may process personal data to provide payment services. Please review Stripe’s policies for details.
+            </p>
+
+            <h3>Account data</h3>
+            <p>
+              We store minimal account data necessary to provide access (e.g., email and subscription status).
+              If you contact us for support, you may choose to share additional information—only share what is necessary.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <span class="sum-left">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="sum-title">4) Contact &amp; Company Details</span>
+            </span>
+            <span class="chev" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="content">
+            <p>
+              If you have questions about these Terms or would like to request a refund under the Good Faith Guarantee, contact us:
+            </p>
+            <ul>
+              <li><strong>Contact email:</strong> <span style="color: rgba(255,255,255,0.86)">skipittools@gmail.com</span></li>
+              <li><strong>Company:</strong> SkipIt Software (Romania, EU)</li>
+            </ul>
+            <p class="callout">
+              For Stripe disputes/chargebacks: please contact us first. Most issues can be resolved quickly without escalating.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <footer class="footer" role="contentinfo">
+        <div><strong>SkipIt Software</strong> — Tools that save time.</div>
+        <div>Contact: <strong>skipittools@gmail.com</strong></div>
+      </footer>
+    </div>
+  </body>
+</html>
+
+
