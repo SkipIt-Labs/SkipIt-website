@@ -83,7 +83,7 @@ export default function ToolsPage() {
             </p>
           </div>
           <a
-            href="SkipIt-website/contact"
+            href="contact"
             className="px-6 py-3 rounded-xl btn-primary font-semibold transition text-center"
           >
             Request Tools
