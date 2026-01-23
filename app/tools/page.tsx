@@ -23,7 +23,7 @@ export default function ToolsPage() {
             </p>
           </div>
           <a
-            href="https://github.com/skipittools"
+            href="https://github.com/SkipIt-Labs"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl btn-ghost font-semibold transition"
