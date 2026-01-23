@@ -3,7 +3,7 @@ const tools = [
     name: "Media Saver",
     description: "Download playlists, long videos, or full matches without limits.",
     repoUrl: "https://github.com/SkipIt-Labs/Media-Saver",
-    downloadUrl: "https://github.com/SkipIt-Labs/Media-Saver/releases/download/v0.1.1/Media.Saver-Setup-0.1.1.exe",
+    downloadUrl: "https://github.com/SkipIt-Labs/Media-Saver/releases/download/v0.1.3/Media.Saver-Setup-0.1.3.exe",
     tags: ["video", "audio", "offline"],
   },
 ];
