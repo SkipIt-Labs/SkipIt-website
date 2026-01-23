@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import SpotlightCard from "@/components/SpotlightCard";
 import { HardDrive, ShieldCheck, Rocket, Zap, Package, Cpu, Github } from "lucide-react";
+import { basePath } from "@/lib/basePath";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
                   }}
                 />
                 <Image
-                  src="https://github.com/SkipIt-Labs/SkipIt-website/blob/main/public/glitch_logo.gif"
+                  src={`${basePath}/glitch_logo.gif`}
                   alt="SkipIt"
                   width={520}
                   height={520}

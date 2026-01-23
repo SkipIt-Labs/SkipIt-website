@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { basePath } from "@/lib/basePath";
 
 export default function Navbar() {
   return (
@@ -7,7 +8,7 @@ export default function Navbar() {
       <div className="flex items-center glass neon-ring rounded-2xl px-4 py-3">
         <Link href="/" className="flex items-center">
           <Image
-            src="/skipit-icon.png"
+            src={`${basePath}/skipit-icon.png`}
             alt="SkipIt"
             width={212}
             height={212}
