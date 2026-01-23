@@ -1,1 +1,1 @@
-export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+export const basePath = "https://github.com/SkipIt-Labs/SkipIt-website/tree/main/public"
