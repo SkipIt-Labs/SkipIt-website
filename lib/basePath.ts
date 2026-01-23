@@ -1,1 +1,1 @@
-export const basePath = "https://github.com/SkipIt-Labs/SkipIt-website/tree/main/public"
+export const basePath = "SkipIt-website"
