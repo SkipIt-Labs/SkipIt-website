@@ -1,12 +1,7 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { useUser } from "@/lib/useUser";
 
 export default function Navbar() {
-  const { user, loading } = useUser();
-
   return (
     <nav className="w-full px-6 md:px-8 py-4 flex items-center justify-between">
       <div className="flex items-center glass neon-ring rounded-2xl px-4 py-3">
@@ -26,38 +21,20 @@ export default function Navbar() {
           href="/tools"
           className="px-4 py-2 rounded-xl text-white/80 hover:text-white hover:bg-white/5 transition"
         >
-          Tools
-        </Link>
-        <Link
-          href="/pricing"
-          className="px-4 py-2 rounded-xl text-white/80 hover:text-white hover:bg-white/5 transition"
-        >
-          Subscription
+          Browse Tools
         </Link>
         <Link
           href="/contact"
           className="px-4 py-2 rounded-xl text-white/80 hover:text-white hover:bg-white/5 transition"
         >
-          Contact
+          Request Tools
         </Link>
-
-        {!loading && user && (
-          <Link
-            href="/account"
-            className="px-4 py-2 rounded-xl btn-primary font-semibold transition"
-          >
-            Account
-          </Link>
-        )}
-
-        {!loading && !user && (
-          <Link
-            href="/login"
-            className="px-4 py-2 rounded-xl btn-primary font-semibold transition"
-          >
-            Login
-          </Link>
-        )}
+        <Link
+          href="/"
+          className="px-4 py-2 rounded-xl btn-primary font-semibold transition"
+        >
+          Home
+        </Link>
       </div>
     </nav>
   );
