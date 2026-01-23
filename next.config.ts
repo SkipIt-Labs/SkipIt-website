@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const basePath = "/Skiplit-website";
+const basePath = "/SkipIt-website";
 
 const nextConfig: NextConfig = {
   output: "export",
