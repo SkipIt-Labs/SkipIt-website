@@ -19,7 +19,7 @@ export default function Home() {
                   }}
                 />
                 <Image
-                  src="/glitch_logo.gif"
+                  src="https://github.com/SkipIt-Labs/SkipIt-website/blob/main/public/glitch_logo.gif"
                   alt="SkipIt"
                   width={520}
                   height={520}
