@@ -177,6 +177,13 @@ export default function Home() {
               </p>
             </div>
 
+            <div className="glass neon-ring rounded-2xl p-6 hover:border-white/30 transition">
+              <h3 className="text-xl font-semibold mb-2">PitchChanger</h3>
+              <p className="text-white/60 text-sm mb-4">
+                Shift the pitch of audio and video files by up to ±24 semitones with drag-and-drop.
+              </p>
+            </div>
+
           </div>
 
           <div className="text-center mt-12">

@@ -13,6 +13,13 @@ const tools = [
     downloadUrl: "https://github.com/SkipIt-Labs/Vers2Go/releases/download/v1.0.0/Vers2Go-Setup-1.0.0.exe",
     tags: ["lyrics", "powerpoint", "slides"],
   },
+  {
+    name: "PitchChanger",
+    description: "Shift the pitch of audio and video files by up to ±24 semitones with drag-and-drop.",
+    repoUrl: "https://github.com/papura-octavian/Pitch_changher",
+    downloadUrl: "https://github.com/papura-octavian/Pitch_changher/releases/download/v1.2.1/PitchShifter-Setup-1.2.1.exe",
+    tags: ["audio", "video", "pitch"],
+  },
 ];
 
 export default function ToolsPage() {
