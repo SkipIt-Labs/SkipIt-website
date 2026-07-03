@@ -170,6 +170,13 @@ export default function Home() {
               </p>
             </div>
 
+            <div className="glass neon-ring rounded-2xl p-6 hover:border-white/30 transition">
+              <h3 className="text-xl font-semibold mb-2">Vers2Go</h3>
+              <p className="text-white/60 text-sm mb-4">
+                Turn song lyrics into ready-to-present PowerPoint slides, one stanza per slide.
+              </p>
+            </div>
+
           </div>
 
           <div className="text-center mt-12">

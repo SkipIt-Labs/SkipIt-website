@@ -6,6 +6,13 @@ const tools = [
     downloadUrl: "https://github.com/SkipIt-Labs/Media-Saver/releases/download/v0.1.3/Media.Saver-Setup-0.1.3.exe",
     tags: ["video", "audio", "offline"],
   },
+  {
+    name: "Vers2Go",
+    description: "Turn song lyrics into ready-to-present PowerPoint slides, one stanza per slide.",
+    repoUrl: "https://github.com/SkipIt-Labs/Vers2Go",
+    downloadUrl: "https://github.com/SkipIt-Labs/Vers2Go/releases/download/v1.0.0/Vers2Go-Setup-1.0.0.exe",
+    tags: ["lyrics", "powerpoint", "slides"],
+  },
 ];
 
 export default function ToolsPage() {
