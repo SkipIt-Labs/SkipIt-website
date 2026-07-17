@@ -20,6 +20,13 @@ const tools = [
     downloadUrl: "https://github.com/papura-octavian/Pitch_changher/releases/download/v1.2.1/PitchShifter-Setup-1.2.1.exe",
     tags: ["audio", "video", "pitch"],
   },
+  {
+    name: "OmniView",
+    description: "Universal media viewer that opens HEIC, AVIF, TIFF, HEVC and 25+ other formats without any system codecs.",
+    repoUrl: "https://github.com/SkipIt-Labs/OmniView",
+    downloadUrl: "https://github.com/SkipIt-Labs/OmniView/releases/download/v1.0.0/OmniView.Setup.1.0.0.exe",
+    tags: ["images", "video", "viewer"],
+  },
 ];
 
 export default function ToolsPage() {

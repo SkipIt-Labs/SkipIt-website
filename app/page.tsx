@@ -162,7 +162,7 @@ export default function Home() {
             <div className="hidden md:block h-px flex-1 ml-6 bg-gradient-to-r from-white/0 via-white/15 to-white/0" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="glass neon-ring rounded-2xl p-6 hover:border-white/30 transition">
               <h3 className="text-xl font-semibold mb-2">Media Saver</h3>
               <p className="text-white/60 text-sm mb-4">
@@ -181,6 +181,13 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-2">PitchChanger</h3>
               <p className="text-white/60 text-sm mb-4">
                 Shift the pitch of audio and video files by up to ±24 semitones with drag-and-drop.
+              </p>
+            </div>
+
+            <div className="glass neon-ring rounded-2xl p-6 hover:border-white/30 transition">
+              <h3 className="text-xl font-semibold mb-2">OmniView</h3>
+              <p className="text-white/60 text-sm mb-4">
+                Universal media viewer that opens HEIC, AVIF, TIFF, HEVC and 25+ other formats without any system codecs.
               </p>
             </div>
 
