@@ -27,6 +27,20 @@ const tools = [
     downloadUrl: "https://github.com/SkipIt-Labs/OmniView/releases/download/v1.0.0/OmniView.Setup.1.0.0.exe",
     tags: ["images", "video", "viewer"],
   },
+  {
+    name: "PoocketSync Windows",
+    description: "A simple app that let's you transfer files both ways PC to phone and phone to PC",
+    repoUrl: "https://github.com/papura-octavian/PocketSync",
+    downloadUrl: "https://github.com/papura-octavian/PocketSync/releases/download/v1.0.0/PocketSync-Setup-1.0.0.exe",
+    tags: ["sync", "windows"],
+  },
+  {
+    name: "PoocketSync APK",
+    description: "A simple app that let's you transfer files both ways PC to phone and phone to PC",
+    repoUrl: "https://github.com/papura-octavian/PocketSync",
+    downloadUrl: "https://github.com/papura-octavian/PocketSync/releases/download/v1.0.0/PocketSync-1.0.0.apk",
+    tags: ["sync", "Android"],
+  },
 ];
 
 export default function ToolsPage() {
